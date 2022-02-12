@@ -11,24 +11,35 @@ extends Node2D
 # not everything is equal, some skills cost more ap than others.
 # multiple players and enemy characters
 
-var max_hp:int = 10
-var hp:int = max_hp
+var max_hp = 15
+var hp = 10 setget set_hp
 
-var max_mp:int = 10
-var mp:int = max_mp
+var max_mp = 10
+var mp = 10 setget set_mp
 
-var max_ap:int = 100
-var ap:int = max_ap
+var max_ap = 3
+var ap = 3 setget set_ap
 
-var strength:int = 5
-var defence:int = 5
-var speed:int = 5
+var is_turn = false 
 
-# how will skills work?
-# heck
+signal turn_ended
+signal defeated
 
-# FUCNTIONS
-# gaining ap
-# updating health/taking damage
-#
 
+	
+func set_hp(new_hp):
+	hp = clamp(new_hp, 0,max_hp)
+
+	
+	
+func set_mp(new_mp):
+	mp = new_mp
+
+	
+func set_ap(new_ap):
+	ap = new_ap
+	if ap == 0:
+		no_ap()
+		
+func no_ap():
+	pass
