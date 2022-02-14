@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/battlers/party/PartyMember.gd" type="Script" id=1]
+[ext_resource path="res://src/battlers/Battler.tscn" type="PackedScene" id=2]
+
+[node name="PartyMember" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Skills" type="Node" parent="." index="0"]
