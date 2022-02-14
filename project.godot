@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-rpg- 2"
+run/main_scene="res://src/main/Main.tscn"
 config/icon="res://icon.png"
 
 [physics]
