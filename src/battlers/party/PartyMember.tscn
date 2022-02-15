@@ -66,7 +66,6 @@ __meta__ = {
 }
 
 [node name="MenuCursor" type="TextureRect" parent="UI" index="2"]
-visible = false
 modulate = Color( 0.117647, 0.117647, 0.117647, 1 )
 margin_left = 142.0
 margin_top = -136.0
@@ -77,3 +76,5 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="skill_selected" from="UI/MenuSelector" to="." method="_on_MenuSelector_skill_selected"]

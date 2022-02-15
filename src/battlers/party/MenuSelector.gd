@@ -11,12 +11,11 @@ extends VBoxContainer
 var selected_index := 0
 onready var menuCursor = get_parent().get_node("MenuCursor")
 signal skill_selected(skill_name)
-
+onready var skills = get_parent().get_parent().get_node("Skills").get_children()
 func _ready():
 	make_skill_menu()
 	
 func make_skill_menu() -> void:
-	var skills = get_parent().get_parent().get_node("Skills").get_children()
 	for skill in skills:
 		var skill_btn = Button.new()
 		skill_btn.text = skill.skill_name
@@ -31,8 +30,8 @@ func _input(event):
 		selected_index = wrapi(selected_index + 1, 0, get_child_count())
 		update_cursor(selected_index)
 	
-	if event.is_action("confirm"):
-		emit_signal("skill_selected", get_child(selected_index).skill_name)
+	if event.is_action_pressed("confirm"):
+		emit_signal("skill_selected", skills[selected_index])
 
 func update_cursor(selected_index:int):
 	print(selected_index)

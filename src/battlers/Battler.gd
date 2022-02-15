@@ -16,8 +16,9 @@ var defen:int = 2
 var speed:int = 10
 
 var is_turn:bool = false 
+var active:bool = false
 
-var is_party_memb:bool
+var is_party_member:bool
 
 signal turn_ended
 signal defeated

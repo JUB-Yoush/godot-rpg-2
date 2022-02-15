@@ -1,16 +1,12 @@
 extends Battler
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	print(max_hp)
+	setup_enemy()
+	print('from enemy')
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func setup_enemy():
+	is_party_member = false
+	
+func start_turn():
+	print('from enemy')
+	
