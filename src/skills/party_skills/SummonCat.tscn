@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/skills/Skill.tscn" type="PackedScene" id=1]
+
+[node name="Summon Cat" instance=ExtResource( 1 )]
+skill_name = "Cat_Summon"
+skill_info = "AP:3 MP:5 DMG: 10 summon a cat lmao"
+skill_mp_cost = 5
+skill_ap_cost = 3
+skill_dmg = 10
