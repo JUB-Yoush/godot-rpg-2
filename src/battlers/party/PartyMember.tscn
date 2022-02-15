@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/battlers/party/PartyMember.gd" type="Script" id=1]
 [ext_resource path="res://src/battlers/Battler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://src/battlers/party/MenuSelector.gd" type="Script" id=4]
 
 [node name="PartyMember" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -18,11 +20,71 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="UI" index="0"]
-margin_left = -33.0
+margin_left = -50.0
 margin_top = -1.0
-margin_right = 74.0
+margin_right = 88.0
 margin_bottom = 39.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="UI/Panel" index="0"]
+[node name="HPLabel" type="Label" parent="UI/Panel" index="0"]
 margin_right = 40.0
 margin_bottom = 14.0
+text = "HP:0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPLabel" type="Label" parent="UI/Panel" index="1"]
+margin_left = 49.0
+margin_top = 1.0
+margin_right = 89.0
+margin_bottom = 15.0
+text = "MP:0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="APLabel" type="Label" parent="UI/Panel" index="2"]
+margin_left = 97.0
+margin_right = 137.0
+margin_bottom = 14.0
+text = "AP:0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuSelector" type="VBoxContainer" parent="UI" index="1"]
+margin_left = 55.0
+margin_top = -137.0
+margin_right = 129.0
+margin_bottom = -5.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SampleSkillBtn" type="Button" parent="UI/MenuSelector" index="0"]
+margin_right = 76.0
+margin_bottom = 20.0
+text = "Skill Btn"
+
+[node name="SampleSkillBtn2" type="Button" parent="UI/MenuSelector" index="1"]
+margin_top = 24.0
+margin_right = 76.0
+margin_bottom = 44.0
+text = "Skill Btn 2"
+
+[node name="MenuCursor" type="TextureRect" parent="UI" index="2"]
+visible = false
+modulate = Color( 0.117647, 0.117647, 0.117647, 1 )
+margin_left = 142.0
+margin_top = -136.0
+margin_right = 206.0
+margin_bottom = -72.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

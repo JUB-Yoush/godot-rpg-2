@@ -11,4 +11,3 @@ export var skill_ap_cost:int
 export var skill_dmg:int
 
 
-
