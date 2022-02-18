@@ -15,7 +15,7 @@ var stren:int = 5
 var defen:int = 2
 var speed:int = 10
 
-var is_turn:bool = false 
+var is_turn:bool = false setget  set_turn
 var active:bool = false
 
 var is_party_member:bool
@@ -43,6 +43,11 @@ func no_hp() -> void:
 	emit_signal("defeated")
 	pass
 
+func set_turn(new_is_turn):
+	is_turn = new_is_turn
+	if is_turn == true:
+		start_turn()
+
 func take_damage(damage:int) -> void: # pass in taken damage
 	var reduced_damage = min(damage - defen,0) # reduce by own defence
 	hp -= reduced_damage # subtract from hp and update
@@ -52,8 +57,7 @@ func change_mp(diff:int) -> void:
 	mp -= diff
 	set_mp(mp)
 
-func turn_started() -> void:
-	ap = ap + 2
-	set_ap(ap)
+func start_turn() -> void:
+	set_ap(ap + 2)
 	
 

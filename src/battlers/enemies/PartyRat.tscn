@@ -8,3 +8,6 @@
 script = ExtResource( 3 )
 
 [node name="EnemyAttack" parent="Skills" index="0" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 0.815686, 0.0862745, 0.0862745, 1 )
