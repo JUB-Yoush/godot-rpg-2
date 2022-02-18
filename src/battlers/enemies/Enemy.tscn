@@ -7,3 +7,17 @@
 script = ExtResource( 2 )
 
 [node name="Skills" type="Node" parent="." index="0"]
+
+[node name="UI" parent="." index="2"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" parent="UI" index="0"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -23.0
+margin_top = 35.0
+margin_right = 23.0
+margin_bottom = 84.0

@@ -1,13 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/main/TurnManager.gd" type="Script" id=2]
-[ext_resource path="res://src/battleScenes/B01P.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/battlers/party/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/battleScenes/B01E.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/battlers/enemies/PartyRat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+
+[sub_resource type="PackedScene" id=1]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "Player", "Skills", "Attack", "Heal", "Summon Cat", "UI", "Panel", "HPLabel", "MPLabel", "APLabel", "MenuSelector", "MenuCursor", "Sprite" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 0, 0 ),
+"variants": [ ExtResource( 3 ) ],
+"version": 2
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
-partyBattlers = ExtResource( 3 )
+partyBattlers = SubResource( 1 )
 enemyBattlers = ExtResource( 4 )
 
 [node name="TurnManager" type="Node2D" parent="."]
@@ -17,11 +37,47 @@ script = ExtResource( 2 )
 
 [node name="PartyMembers" type="Node2D" parent="Battlers"]
 
+[node name="Player" parent="Battlers/PartyMembers" instance=ExtResource( 3 )]
+position = Vector2( 98, 311 )
+
 [node name="Enemies" type="Node2D" parent="Battlers"]
 
+[node name="PartyRat" parent="Battlers/Enemies" instance=ExtResource( 5 )]
+position = Vector2( 822, 333 )
+
+[node name="PartyRat2" parent="Battlers/Enemies" instance=ExtResource( 5 )]
+position = Vector2( 930, 334 )
+
 [node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1016.0
+margin_bottom = 590.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -162.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_fonts/font = SubResource( 2 )
+text = "This text is flavour favoured."
+
+[node name="TargetCursor" type="Sprite" parent="UI"]
+visible = false
+modulate = Color( 0.0509804, 0.0470588, 0.0470588, 1 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 7 )

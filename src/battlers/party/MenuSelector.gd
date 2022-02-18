@@ -8,12 +8,16 @@ extends VBoxContainer
 # signal to partymember node when skill selected
 
 
-var selected_index := 0
+var selected_skill_child := 0
+var selecting_skill = true setget set_selecting_skill
+
 onready var menuCursor = get_parent().get_node("MenuCursor")
 signal skill_selected(skill_name)
 onready var skills = get_parent().get_parent().get_node("Skills").get_children()
 func _ready():
 	make_skill_menu()
+	set_selecting_skill(true)
+	
 	
 func make_skill_menu() -> void:
 	for skill in skills:
@@ -23,21 +27,29 @@ func make_skill_menu() -> void:
 	
 
 func _input(event):
-	if event.is_action_pressed("up"):
-		selected_index = wrapi(selected_index -1, 0, get_child_count())
-		update_cursor(selected_index)
-	if event.is_action_pressed("down"):
-		selected_index = wrapi(selected_index + 1, 0, get_child_count())
-		update_cursor(selected_index)
-	
-	if event.is_action_pressed("confirm"):
-		emit_signal("skill_selected", skills[selected_index])
+	if selecting_skill == true:
+		if event.is_action_pressed("up"):
+			selected_skill_child = wrapi(selected_skill_child -1, 0, get_child_count())
+			update_cursor(selected_skill_child)
+		if event.is_action_pressed("down"):
+			selected_skill_child = wrapi(selected_skill_child + 1, 0, get_child_count())
+			update_cursor(selected_skill_child)
+		
+		if event.is_action_pressed("confirm"):
+			set_selecting_skill(false)
+			emit_signal("skill_selected", skills[selected_skill_child])
+			
 
-func update_cursor(selected_index:int):
-	print(selected_index)
-	print("update_cursor")
-	menuCursor.rect_position.y = get_child(selected_index).rect_position.y - 135
-	menuCursor.rect_position.x = get_child(selected_index).rect_position.x + 160
+func update_cursor(selected_skill_child:int):
+	menuCursor.position.y = get_child(selected_skill_child).rect_position.y - 130
+	menuCursor.position.x = get_child(selected_skill_child).rect_position.x + 160
 	
-	
+func set_selecting_skill(selecting_state):
+	selecting_skill = selecting_state
+	if selecting_skill:
+		menuCursor.visible = true
+		update_cursor(selected_skill_child)
+	else:
+		menuCursor.visible = false
+		
 	

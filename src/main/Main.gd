@@ -5,7 +5,7 @@ export var enemyBattlers:PackedScene
 
 
 func _ready() -> void:
-	initalize_battlers()
+	#initalize_battlers()
 	pass
 
 

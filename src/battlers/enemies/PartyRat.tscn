@@ -11,3 +11,17 @@ script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="1"]
 modulate = Color( 0.815686, 0.0862745, 0.0862745, 1 )
+
+[node name="UI" parent="." index="2"]
+margin_left = -30.0
+margin_top = 30.0
+margin_right = 30.0
+margin_bottom = 110.0
+
+[node name="Panel" parent="UI" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
