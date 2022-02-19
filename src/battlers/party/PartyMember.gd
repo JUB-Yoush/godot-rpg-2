@@ -55,7 +55,7 @@ func _input(event):
 			update_target_cursor(selected_target)
 			
 		if Input.is_action_just_pressed("right"):
-			selected_target = wrapi( + 1, 0, targets.size()-1)
+			selected_target = wrapi(selected_target + 1, 0, targets.size())
 			update_target_cursor(selected_target)
 			
 		if Input.is_action_just_pressed("return"):

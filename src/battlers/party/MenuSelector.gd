@@ -13,10 +13,12 @@ var selecting_skill = true setget set_selecting_skill
 
 onready var menuCursor = get_parent().get_node("MenuCursor")
 signal skill_selected(skill_name)
+signal update_textbox(text)
 onready var skills = get_parent().get_parent().get_node("Skills").get_children()
 func _ready():
 	make_skill_menu()
 	set_selecting_skill(true)
+	connect("update_textbox",get_node("../../UI"),"new_text")
 	
 	
 func make_skill_menu() -> void:
@@ -42,7 +44,10 @@ func _input(event):
 
 func update_cursor(selected_skill_child:int):
 	menuCursor.position.y = get_child(selected_skill_child).rect_position.y - 130
-	menuCursor.position.x = get_child(selected_skill_child).rect_position.x + 160
+	menuCursor.position.x = rect_position.x + rect_size.x + 25
+	var cursor_skill_info = skills[selected_skill_child].skill_info
+	emit_signal("update_textbox",cursor_skill_info)
+	
 	
 func set_selecting_skill(selecting_state):
 	selecting_skill = selecting_state

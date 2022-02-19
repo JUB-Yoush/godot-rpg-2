@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/main/TurnManager.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/battlers/enemies/PartyRat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://src/main/UI.gd" type="Script" id=8]
 
 [sub_resource type="PackedScene" id=1]
 _bundled = {
@@ -43,16 +44,17 @@ position = Vector2( 98, 311 )
 [node name="Enemies" type="Node2D" parent="Battlers"]
 
 [node name="PartyRat" parent="Battlers/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 822, 333 )
+position = Vector2( 822, 309 )
 
 [node name="PartyRat2" parent="Battlers/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 930, 334 )
+position = Vector2( 927, 310 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 1016.0
 margin_bottom = 590.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -2,6 +2,10 @@ extends Node2D
 
 class_name Battler
 
+onready var hpLabel = $UI/Panel/VBoxContainer/HPLabel
+onready var mpLabel = $UI/Panel/VBoxContainer/MPLabel
+onready var apLabel = $UI/Panel/VBoxContainer/APLabel
+
 var max_hp:int = 15
 var hp:int = 10 setget set_hp
 
@@ -11,8 +15,8 @@ var mp:int = 10 setget set_mp
 var max_ap:int = 3
 var ap:int = 3 setget set_ap
 
-var stren:int = 5
-var defen:int = 2
+var strength:int = 5
+var defence:int = 2
 var speed:int = 10
 
 var is_turn:bool = false setget  set_turn
@@ -25,14 +29,17 @@ signal defeated
 
 func set_hp(new_hp:int):
 	hp = clamp(new_hp, 0,max_hp)
+	hpLabel.text = ("HP: "+ str(hp))
 	if hp == 0:
 		no_hp()
 
 func set_mp(new_mp:int):
 	mp = new_mp
+	mpLabel.text = ("MP: "+ str(mp))
 
 func set_ap(new_ap:int):
 	ap = new_ap
+	apLabel.text = ("AP: "+ str(ap))
 	if ap == 0:
 		no_ap()
 		
@@ -49,7 +56,7 @@ func set_turn(new_is_turn):
 		start_turn()
 
 func take_damage(damage:int) -> void: # pass in taken damage
-	var reduced_damage = min(damage - defen,0) # reduce by own defence
+	var reduced_damage = min(damage - defence,0) # reduce by own defence
 	hp -= reduced_damage # subtract from hp and update
 	set_hp(hp)
 
@@ -60,4 +67,7 @@ func change_mp(diff:int) -> void:
 func start_turn() -> void:
 	set_ap(ap + 2)
 	
-
+func _ready():
+	set_hp(hp)
+	set_mp(mp)
+	set_ap(ap)
