@@ -14,6 +14,7 @@ var selected_target:= 0
 var is_targeting:bool = false setget set_is_targeting
 
 func _ready() -> void:
+	connect("use_skill",get_parent().get_parent().get_parent(),"use_skill_on_target")
 	setup_party_member()
 	print(max_hp)
 	is_turn = true
@@ -62,10 +63,10 @@ func _input(event):
 			$UI/MenuSelector.set_selecting_skill(true)
 			set_is_targeting(false)
 		
-		if Input.is_action_just_pressed("confirm"):
+		if Input.is_action_just_pressed("confirm2"):
 			#------------------------- SEND INFO TO MAIN NODE AND DEAL SOME HECKING DAMAGE ----------------
 			targetedEnemyNode = targets[selected_target]
-			print(targetedEnemyNode)
+			emit_signal("use_skill",chosen_skill,targetedEnemyNode,self)
 			pass
 
 func update_target_cursor(selected_target):

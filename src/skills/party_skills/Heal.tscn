@@ -6,7 +6,7 @@
 [node name="Heal" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 skill_name = "Heal"
-skill_info = "2 AP,-5MP, +10HP: Heal yourself"
-skill_hp_cost = -10
+skill_info = "2 AP,-5MP, +10HP: Heal target"
 skill_mp_cost = 5
 skill_ap_cost = 2
+skill_dmg = -10

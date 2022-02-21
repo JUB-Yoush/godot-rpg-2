@@ -28,7 +28,7 @@ signal turn_ended
 signal defeated
 
 func set_hp(new_hp:int):
-	hp = clamp(new_hp, 0,max_hp)
+	
 	hpLabel.text = ("HP: "+ str(hp))
 	if hp == 0:
 		no_hp()
@@ -38,11 +38,27 @@ func set_mp(new_mp:int):
 	mpLabel.text = ("MP: "+ str(mp))
 
 func set_ap(new_ap:int):
+	print(new_ap)
 	ap = new_ap
 	apLabel.text = ("AP: "+ str(ap))
 	if ap == 0:
 		no_ap()
-		
+
+func change_hp(hp_diff:int):
+	#print('changing'+ self.name + "hp by " + str(hp_diff))
+	hp = clamp(hp - hp_diff, 0,max_hp)
+	set_hp(hp)
+	
+
+func change_mp(mp_diff:int):
+	hp = clamp(mp - mp_diff, 0,max_mp)
+	set_mp(mp)
+
+func change_ap(ap_diff:int):
+	hp = clamp(ap - ap_diff, 0,max_ap)
+	set_ap(ap)
+
+	
 func no_ap():
 	emit_signal("turn_ended") # called to the main node that passes turns along
 
@@ -56,13 +72,12 @@ func set_turn(new_is_turn):
 		start_turn()
 
 func take_damage(damage:int) -> void: # pass in taken damage
-	var reduced_damage = min(damage - defence,0) # reduce by own defence
-	hp -= reduced_damage # subtract from hp and update
-	set_hp(hp)
+	#if a damaging skill
+	if damage > 0:
+		 damage = max(damage - defence,0) # reduce by own defence
+	 # subtract from hp and update
+	change_hp(damage)
 
-func change_mp(diff:int) -> void:
-	mp -= diff
-	set_mp(mp)
 
 func start_turn() -> void:
 	set_ap(ap + 2)
