@@ -1,4 +1,6 @@
 extends Node
+
+class_name Skill
 #just data, all functions are within partymember.gd
 
 export var skill_name:String

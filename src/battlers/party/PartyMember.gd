@@ -5,7 +5,7 @@ onready var skills = $Skills
 onready var skill_list = skills.get_children()
 onready var chosen_skill:Node
 onready var targetedEnemyNode:Node2D
-signal skill_queued(skill,character)
+signal use_skill(skill,target,user)
 
 onready var targetCursor = get_node("../../../UI/TargetCursor")
 

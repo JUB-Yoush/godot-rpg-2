@@ -6,7 +6,7 @@
 [node name="Attack" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 skill_name = "Attack"
-skill_info = "-2 AP, +2 MP, 5 DMG "
+skill_info = "-2 AP, +1 MP, 5 DMG: Basic Attack"
 skill_mp_cost = -2
 skill_ap_cost = 2
 skill_dmg = 5

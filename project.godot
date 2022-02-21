@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Battler",
 "language": "GDScript",
 "path": "res://src/battlers/Battler.gd"
+}, {
+"base": "Node",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://src/skills/Skill.gd"
 } ]
 _global_script_class_icons={
-"Battler": ""
+"Battler": "",
+"Skill": ""
 }
 
 [application]
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Godot-rpg- 2"
 run/main_scene="res://src/main/Main.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+window=false
 
 [input]
 

@@ -19,3 +19,5 @@ func initalize_battlers():
 		$Battlers/Enemies.add_child(enemy)
 		
 	
+func use_skill_on_target(skill:Skill,target:Battler,user:Battler):
+	pass

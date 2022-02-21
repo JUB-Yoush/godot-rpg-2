@@ -12,13 +12,17 @@ var selected_skill_child := 0
 var selecting_skill = true setget set_selecting_skill
 
 onready var menuCursor = get_parent().get_node("MenuCursor")
+
 signal skill_selected(skill_name)
 signal update_textbox(text)
+
 onready var skills = get_parent().get_parent().get_node("Skills").get_children()
 func _ready():
 	make_skill_menu()
 	set_selecting_skill(true)
-	connect("update_textbox",get_node("../../UI"),"new_text")
+	#connect("update_textbox",get_parent().get_parent().get_parent().get_parent().get_parent().get_node("UI"),"new_text")
+	connect("update_textbox",get_node("../../../../../UI"),"new_text")
+	
 	
 	
 func make_skill_menu() -> void:
