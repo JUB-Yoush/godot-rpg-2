@@ -10,6 +10,7 @@ extends VBoxContainer
 
 var selected_skill_child := 0
 var selecting_skill = true setget set_selecting_skill
+var skill_menu_active:bool = false
 
 onready var menuCursor = get_parent().get_node("MenuCursor")
 
@@ -19,7 +20,7 @@ signal update_textbox(text)
 onready var skills = get_parent().get_parent().get_node("Skills").get_children()
 func _ready():
 	make_skill_menu()
-	set_selecting_skill(true)
+	
 	#connect("update_textbox",get_parent().get_parent().get_parent().get_parent().get_parent().get_node("UI"),"new_text")
 	connect("update_textbox",get_node("../../../../../UI"),"new_text")
 	
@@ -33,7 +34,7 @@ func make_skill_menu() -> void:
 	
 
 func _input(event):
-	if selecting_skill == true:
+	if selecting_skill == true && skill_menu_active == true:
 		if event.is_action_pressed("up"):
 			selected_skill_child = wrapi(selected_skill_child -1, 0, get_child_count())
 			update_cursor(selected_skill_child)
