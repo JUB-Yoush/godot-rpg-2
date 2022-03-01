@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/skills/Skill.tscn" type="PackedScene" id=1]
+
+[node name="End" instance=ExtResource( 1 )]
+skill_name = "End"
+skill_info = "Maintain AP and end your turn."

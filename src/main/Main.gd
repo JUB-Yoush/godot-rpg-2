@@ -21,6 +21,9 @@ func initalize_battlers():
 	
 func use_skill_on_target(skill:Skill,target:Battler,user:Battler):
 	print('skill: '+ skill.name)
+	print('HP: '+ str(skill.skill_hp_cost))
+	print('MP: '+ str(skill.skill_mp_cost))
+	print('AP: '+ str(skill.skill_ap_cost))
 	print('target: '+ target.name)
 	print('user: '+ user.name)
 	if user.mp >= skill.skill_mp_cost && user.ap >= skill.skill_ap_cost:

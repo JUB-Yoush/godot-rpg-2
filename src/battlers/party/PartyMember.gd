@@ -1,5 +1,8 @@
 extends "res://src/battlers/Battler.gd"
 
+#------------------------- Party TURNS -----------------------------
+# Display skills
+# allow player to select skills from that party member
 
 onready var skills = $Skills
 onready var skill_list = skills.get_children()
@@ -16,8 +19,7 @@ var is_targeting:bool = false setget set_is_targeting
 func _ready() -> void:
 	connect("use_skill",get_parent().get_parent().get_parent(),"use_skill_on_target")
 	setup_party_member()
-	print(max_hp)
-	is_turn = true
+	
 
 func set_is_targeting(targeting_state):
 	is_targeting = targeting_state

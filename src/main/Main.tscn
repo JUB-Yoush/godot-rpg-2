@@ -8,27 +8,14 @@
 [ext_resource path="res://FutilePro.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://src/main/UI.gd" type="Script" id=8]
-
-[sub_resource type="PackedScene" id=1]
-_bundled = {
-"base_scene": 0,
-"conn_count": 0,
-"conns": PoolIntArray(  ),
-"editable_instances": [  ],
-"names": PoolStringArray( "Player", "Skills", "Attack", "Heal", "Summon Cat", "UI", "Panel", "HPLabel", "MPLabel", "APLabel", "MenuSelector", "MenuCursor", "Sprite" ),
-"node_count": 1,
-"node_paths": [  ],
-"nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 0, 0 ),
-"variants": [ ExtResource( 3 ) ],
-"version": 2
-}
+[ext_resource path="res://src/battleScenes/B01P.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
-partyBattlers = SubResource( 1 )
+partyBattlers = ExtResource( 9 )
 enemyBattlers = ExtResource( 4 )
 
 [node name="TurnManager" type="Node2D" parent="."]

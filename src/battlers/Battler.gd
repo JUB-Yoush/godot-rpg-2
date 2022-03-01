@@ -6,6 +6,7 @@ onready var hpLabel = $UI/Panel/VBoxContainer/HPLabel
 onready var mpLabel = $UI/Panel/VBoxContainer/MPLabel
 onready var apLabel = $UI/Panel/VBoxContainer/APLabel
 
+
 var max_hp:int = 15
 var hp:int = 10 setget set_hp
 
@@ -28,34 +29,37 @@ signal turn_ended
 signal defeated
 
 func set_hp(new_hp:int):
-	
+	print("NEW HP: " + str(new_hp))
 	hpLabel.text = ("HP: "+ str(hp))
 	if hp == 0:
 		no_hp()
 
 func set_mp(new_mp:int):
+	print("NEW MP: " + str(new_mp))
 	mp = new_mp
 	mpLabel.text = ("MP: "+ str(mp))
 
 func set_ap(new_ap:int):
-	print(new_ap)
+	print("NEW AP: " + str(new_ap))
 	ap = new_ap
 	apLabel.text = ("AP: "+ str(ap))
 	if ap == 0:
 		no_ap()
 
 func change_hp(hp_diff:int):
-	#print('changing'+ self.name + "hp by " + str(hp_diff))
+	print('changing hp of '+ self.name + str(hp) +" by " + str(hp_diff))
 	hp = clamp(hp - hp_diff, 0,max_hp)
 	set_hp(hp)
 	
 
 func change_mp(mp_diff:int):
-	hp = clamp(mp - mp_diff, 0,max_mp)
+	print('changing mp of '+ self.name + str(mp) +" by " + str(mp_diff))
+	mp = clamp(mp - mp_diff, 0,max_mp)
 	set_mp(mp)
 
 func change_ap(ap_diff:int):
-	hp = clamp(ap - ap_diff, 0,max_ap)
+	print('changing ap of '+ self.name + str(ap) +" by " + str(ap_diff))
+	ap = clamp(ap - ap_diff, 0,max_ap)
 	set_ap(ap)
 
 	
