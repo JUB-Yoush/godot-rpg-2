@@ -10,7 +10,7 @@ extends VBoxContainer
 
 var selected_skill_child := 0
 var selecting_skill = true setget set_selecting_skill
-var skill_menu_active:bool = false
+var is_parent_turn:bool = false 
 
 onready var menuCursor = get_parent().get_node("MenuCursor")
 
@@ -34,7 +34,7 @@ func make_skill_menu() -> void:
 	
 
 func _input(event):
-	if selecting_skill == true && skill_menu_active == true:
+	if selecting_skill == true && is_parent_turn == true:
 		if event.is_action_pressed("up"):
 			selected_skill_child = wrapi(selected_skill_child -1, 0, get_child_count())
 			update_cursor(selected_skill_child)
@@ -62,4 +62,9 @@ func set_selecting_skill(selecting_state):
 	else:
 		menuCursor.visible = false
 		
+
+func update_menu_visibility(is_parent_turn):
+	if is_parent_turn:
+		visible = false
+		menuCursor.visible = false
 	

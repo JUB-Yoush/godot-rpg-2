@@ -74,6 +74,8 @@ func set_turn(new_is_turn):
 	is_turn = new_is_turn
 	if is_turn == true:
 		start_turn()
+	else:
+		end_turn()
 
 func take_damage(damage:int) -> void: # pass in taken damage
 	#if a damaging skill
@@ -85,7 +87,10 @@ func take_damage(damage:int) -> void: # pass in taken damage
 
 func start_turn() -> void:
 	set_ap(ap + 2)
-	
+
+func end_turn():
+	pass
+
 func _ready():
 	set_hp(hp)
 	set_mp(mp)

@@ -21,7 +21,7 @@ var skill_menu_active:bool
 func _ready() -> void:
 	connect("use_skill",get_parent().get_parent().get_parent(),"use_skill_on_target")
 	setup_party_member()
-	start_turn()
+	set_turn(true)
 	
 
 func set_is_targeting(targeting_state):
@@ -43,9 +43,15 @@ func _on_MenuSelector_skill_selected(skill):
 func setup_party_member():
 	is_party_member = true
 
+func set_turn(new_is_turn):
+	pass
+
 func start_turn():
 	skillMenu.show()
 	skillMenu.set_selecting_skill(true)
+	pass
+
+func end_turn():
 	pass
 
 func pick_target(chosen_skill):
